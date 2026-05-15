@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "SaaSFlow"
+version = "1.0.0"
+id = "artifacts/saasflow"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24410
+
+[services.development]
+run = "pnpm --filter @workspace/saasflow run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/saasflow", "run", "build" ]
+publicDir = "artifacts/saasflow/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24410"
+BASE_PATH = "/"
