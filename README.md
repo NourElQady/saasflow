@@ -35,3 +35,5 @@ npm run build
 - shadcn/ui
 - Framer Motion
 - TypeScript
+
+ 
